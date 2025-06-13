@@ -1,147 +1,109 @@
-# Combine the three HTML files: Home, Shop, and Contact into a single-page HTML with sections and navigation links.
-# Then return the HTML code as downloadable content.
-
-combined_html = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PROFESSOR AYAN - Full Website</title>
-  <link rel="icon" type="image/png" href="https://i.postimg.cc/tC55YnC6/IMG-20250606-163032-495.jpg">
+  <title>PROFESSOR AYAN - Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
   <style>
     * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
     }
     body {
-      margin: 0;
       font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #000428, #004e92);
       color: white;
       scroll-behavior: smooth;
     }
     nav {
-      background: rgba(0, 0, 0, 0.9);
+      background-color: rgba(0, 0, 0, 0.8);
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
       position: sticky;
       top: 0;
       z-index: 1000;
     }
     .logo {
-      font-size: 1.8rem;
-      font-weight: bold;
-      color: white;
+      font-size: 2rem;
+      font-weight: 600;
+      color: #00e5ff;
     }
     .nav-links a {
       color: white;
+      margin-left: 20px;
       text-decoration: none;
-      margin: 0 1rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
     }
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+    .nav-links a:hover {
+      color: #00e5ff;
     }
-    section {
-      padding: 3rem 1rem;
-      min-height: 100vh;
-    }
-    #home {
-      background: url('https://i.postimg.cc/8zd24ggv/cd64c4f102ef5cc06a5ab2c5a6f8268d.jpg') no-repeat center center fixed;
-      background-size: cover;
+    .section {
+      padding: 5rem 2rem;
       text-align: center;
     }
-    #shop {
-      background: url('https://i.postimg.cc/522mv96R/IMG-20250606-163145-949.jpg') no-repeat center center fixed;
-      background-size: cover;
+    .hero {
+      padding: 6rem 2rem;
+      background: rgba(0, 0, 0, 0.2);
     }
-    #contact {
-      background: url('https://i.postimg.cc/VkZWFytL/IMG-20250606-163146-292.jpg') no-repeat center center fixed;
-      background-size: cover;
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
     }
-    .profile-image img {
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: auto;
+    }
+    .profile-pic {
       width: 160px;
       height: 160px;
       border-radius: 50%;
-      border: 4px solid white;
-    }
-    .typing-text {
-      font-size: 32px;
-      font-weight: bold;
-      margin-top: 20px;
-      animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
-      border-right: 3px solid white;
-      display: inline-block;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-    @keyframes blink-caret {
-      from, to { border-color: transparent }
-      50% { border-color: white }
-    }
-    .box-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 40px;
-    }
-    .box {
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 15px;
-      padding: 20px;
-      margin: 10px;
-      max-width: 300px;
-      flex: 1 1 250px;
-    }
-    .container, .form-container {
-      max-width: 700px;
+      object-fit: cover;
+      border: 4px solid #00e5ff;
       margin: 2rem auto;
-      background: rgba(0, 0, 0, 0.7);
-      padding: 2rem;
-      border-radius: 10px;
+      display: block;
     }
-    form {
-      display: flex;
-      flex-direction: column;
+    .section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
     }
-    input, select, textarea, button {
-      padding: 0.8rem;
-      border-radius: 5px;
+    .section p {
+      max-width: 700px;
+      margin: auto;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    .contact a {
+      color: #00e5ff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .more-btn {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.8rem 1.5rem;
+      background: #00e5ff;
+      color: #000;
+      font-weight: bold;
       border: none;
-      font-size: 1rem;
-      margin-top: 0.5rem;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background 0.3s ease;
     }
-    input[readonly] {
-      background-color: #dfffe0;
-      color: #008f5f;
-    }
-    button {
-      margin-top: 1.5rem;
-      background: #4caf50;
-      color: white;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #45a049;
+    .more-btn:hover {
+      background: #00b8d4;
     }
     footer {
-      background: rgba(0, 0, 0, 0.8);
-      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.9);
       text-align: center;
-      font-size: 15px;
-    }
-    footer a {
-      color: #00bcd4;
-      display: block;
-      margin: 5px 0;
-      text-decoration: none;
+      padding: 2rem;
+      font-size: 0.9rem;
     }
   </style>
 </head>
@@ -151,110 +113,38 @@ combined_html = """
     <div class="logo">PROFESSOR AYAN</div>
     <div class="nav-links">
       <a href="#home">Home</a>
-      <a href="#shop">Shop</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
       <a href="#contact">Contact</a>
     </div>
   </nav>
 
-  <section id="home">
-    <div class="profile-image">
-      <img src="https://i.postimg.cc/MKyLtGZZ/IMG-20250606-162148-549.jpg" alt="Profile Image">
-    </div>
-    <div class="typing-text">WELCOME TO PROFESSOR AYAN WEBSITE</div>
-    <div class="box-container">
-      <div class="box"><h2>Graphic Designing</h2><p>Logos, posters, banners and custom edits to match your ideas.</p></div>
-      <div class="box"><h2>Ethical Hacking</h2><p>Learn ethical hacking: security checks, testing, and awareness.</p></div>
-      <div class="box"><h2>About Me</h2><p>Professor Ayan: Graphic Designer & Ethical Hacker. For education only.</p></div>
-    </div>
+  <section class="hero section animate__animated animate__fadeIn" id="home">
+    <h1>Hi, I'm Professor Ayan</h1>
+    <p>Graphics Designer & AI Engineer creating elegant solutions and powerful digital designs.</p>
   </section>
 
-  <section id="shop">
-    <div class="container">
-      <h1>Order a Product</h1>
-      <form action="https://formspree.io/f/xyzjkzkz" method="POST">
-        <label>Your Name:</label>
-        <input type="text" name="name" required>
-        <label>Your Email:</label>
-        <input type="email" name="email" required>
-        <label>Your Number:</label>
-        <input type="tel" name="phone" placeholder="03XXXXXXXXX" required>
-        <label>Choose Product:</label>
-        <select name="product" id="product" onchange="updatePrice()" required>
-          <option value="">-- Select Product --</option>
-          <option value="Free Fire Logo">Free Fire Logo</option>
-          <option value="Free Fire Dealing Logo">Free Fire Dealing Logo</option>
-          <option value="Hacker And Stylish Boys Logo">Hacker And Stylish Boys Logo</option>
-          <option value="Want To Create Your Own Choice">Want To Create Your Own Choice</option>
-          <option value="Your Portfolio Website">Your Portfolio Website</option>
-          <option value="Number Unban Website">Number Unban Website</option>
-          <option value="TikTok Video Downloader Website">TikTok Video Downloader Website</option>
-          <option value="Website You Want">Website You Want</option>
-        </select>
-        <label>Product Price:</label>
-        <input type="text" id="price-box" name="price" readonly>
-        <label>Payment Method:</label>
-        <select name="payment" required>
-          <option value="">-- Select Payment --</option>
-          <option>Easypaisa</option>
-          <option>JazzCash</option>
-        </select>
-        <label>Additional Notes:</label>
-        <textarea name="message" rows="4"></textarea>
-        <button type="submit">Place Order</button>
-      </form>
-    </div>
+  <section class="section animate__animated animate__fadeInUp" id="about">
+    <img src="https://i.postimg.cc/VkSnVcWb/Chat-GPT-Image-Jun-13-2025-01-21-57-AM.png" alt="Profile Picture" class="profile-pic">
+
+    <h2>About Me</h2>
+    <p>I am a passionate Graphics Designer and AI Engineer with experience in building modern web designs, smart tools, and efficient AI-powered applications. I focus on delivering top-quality solutions that help individuals and businesses stand out online.</p>
+    <a class="more-btn" href="https://ayan-graphics.vercel.app/" target="_blank">More About Developer</a>
   </section>
 
-  <section id="contact">
-    <div class="form-container">
-      <h2>Contact Me</h2>
-      <form action="https://formspree.io/f/xyzjkzkz" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-      <p>Email: hackerzappyv@gmail.com | ahrar.0932@gmail.com</p>
-      <p>Phone: +92 370 2723151</p>
-    </div>
+  <section class="section animate__animated animate__fadeInUp" id="services">
+    <h2>Services</h2>
+    <p>I offer custom web development, AI integrations, logo design, digital branding, and freelance support for your creative needs. Let's build something amazing together.</p>
+  </section>
+
+  <section class="section contact animate__animated animate__fadeInUp" id="contact">
+    <h2>Contact Me</h2>
+    <p>Email: <a href="mailto:ayanishaque0987@gmail.com">ayanishaque0987@gmail.com</a></p>
+    <p>instagram: <a href="https://www.instagram.com/ayanx_offical/">PROFESOR AYAN X OFFICAL </a></p>
   </section>
 
   <footer>
-    <p>© 2025 AYAN STORE. All Rights Reserved.</p>
-    <a href="https://wa.me/923702723151" target="_blank">📞 +92 3702723151 (WhatsApp)</a>
-    <a href="mailto:Ahrar.0932@gmail.com">✉️ Ahrar.0932@gmail.com</a>
-    <a href="mailto:Hackerzappyv@gmail.com">✉️ Hackerzappyv@gmail.com</a>
-    <a href="https://t.me/zappy_mods" target="_blank">💬 Telegram: @zappy_mods</a>
+    <p>&copy; 2025 PROFESSOR AYAN. All rights reserved.</p>
   </footer>
-
-  <script>
-    const prices = {
-      "Free Fire Logo": "RS 100",
-      "Free Fire Dealing Logo": "RS 150",
-      "Hacker And Stylish Boys Logo": "RS 150",
-      "Want To Create Your Own Choice": "RS 200",
-      "Your Portfolio Website": "RS 200",
-      "Number Unban Website": "RS 150",
-      "TikTok Video Downloader Website": "RS 250",
-      "Website You Want": "RS 1000"
-    };
-    function updatePrice() {
-      const product = document.getElementById("product").value;
-      const priceBox = document.getElementById("price-box");
-      priceBox.value = prices[product] || "";
-    }
-  </script>
-
 </body>
 </html>
-"""
-
-# Save it to index.html for download
-file_path = "/mnt/data/index.html"
-with open(file_path, "w", encoding="utf-8") as f:
-    f.write(combined_html)
-
-file_path
-
-
-
